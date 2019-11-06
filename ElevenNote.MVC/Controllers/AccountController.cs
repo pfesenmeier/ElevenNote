@@ -13,6 +13,10 @@ using ElevenNote.Data;
 
 namespace ElevenNote.MVC.Controllers
 {
+    //Adding 
+    #if !DEBUG
+        [RequireHttps]
+    #endif
     [Authorize]
     public class AccountController : Controller
     {
@@ -424,7 +428,7 @@ namespace ElevenNote.MVC.Controllers
             base.Dispose(disposing);
         }
 
-        #region Helpers
+#region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -481,6 +485,6 @@ namespace ElevenNote.MVC.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-        #endregion
+#endregion
     }
 }
