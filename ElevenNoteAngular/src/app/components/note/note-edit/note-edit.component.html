@@ -1,0 +1,28 @@
+<h1>Edit a Note</h1>
+<hr />
+
+<div *ngIf="note">
+    <form (ngSubmit)="onSubmit()" [formGroup]="editForm">
+        <div>
+            <div hidden>
+                <input matInput placeholder="NoteId" formControlName="NoteId" type="number" required [value]="note.NoteId" />
+            </div>
+            <div hidden>
+                <input matInput placeholder="IsStarred" formControlName="IsStarred" required [value]="note.IsStarred" />
+            </div>
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="Title" formControlName="Title" type="text" required [value]="note.Title" />
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="Content" formControlName="Content" type="text" required [value]="note.Content" />
+                </mat-form-field>
+            </div>
+        </div>
+        <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
+    </form>
+</div>
+
+<a mat-button routerLink="/notes">Back to List</a>

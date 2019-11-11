@@ -37,8 +37,8 @@
         <ng-container matColumnDef="buttons">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let note;">
-                <i class="material-icons">edit</i>
-                <i class="material-icons">delete</i>
+                <i class="material-icons" routerLink="/notes/edit/{{note.NoteId}}">edit</i>
+                <i class="material-icons" routerLink="/notes/delete/{{note.NoteId}}">delete</i>
             </mat-cell>
         </ng-container>
     </mat-table>

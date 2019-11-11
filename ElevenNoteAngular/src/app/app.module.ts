@@ -21,15 +21,20 @@ import { LoginComponent } from './components/login/login.component';
 import { NoteIndexComponent } from './components/note/note-index/note-index.component';
 import { NoteCreateComponent } from './components/note/note-create/note-create.component';
 import { NoteDetailComponent } from './components/note/note-detail/note-detail.component';
+import { NoteEditComponent } from './components/note/note-edit/note-edit.component';
+import { NoteDeleteComponent } from './components/note/note-delete/note-delete.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'notes', children: [
+  { path: 'notes', canActivate: [AuthGuard], children: [
       { path: '', component: NoteIndexComponent },
       { path: 'create', component: NoteCreateComponent },
-      { path: 'detail/:id', component: NoteDetailComponent }
+      { path: 'detail/:id', component: NoteDetailComponent },
+      { path: 'edit/:id', component: NoteEditComponent },
+      { path: 'delete/:id', component: NoteDeleteComponent }
     ]
   },
   { path: '**', component: RegistrationComponent }
@@ -43,7 +48,9 @@ const routes = [
     LoginComponent,
     NoteIndexComponent,
     NoteCreateComponent,
-    NoteDetailComponent
+    NoteDetailComponent,
+    NoteEditComponent,
+    NoteDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +67,8 @@ const routes = [
   ],
   providers: [
     AuthService,
-    NoteService
+    NoteService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Note } from '../models/Note';
 
-const Api_Url = 'https://localhost:44377/';
+const Api_Url = 'https://localhost:44377';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,14 @@ export class NoteService {
 
   getNote(id) {
     return this.http.get(`${Api_Url}/api/note/${id}`, {headers: this.getHeaders() });
+  }
+
+  updateNote(note: Note) {
+    return this.http.put(`${Api_Url}/api/note`, note, { headers: this.getHeaders() });
+  }
+
+  deleteNote(id: number) {
+    return this.http.delete(`${Api_Url}/api/note/${id}`, {headers: this.getHeaders() });
   }
 
   private getHeaders() {
