@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NoteCreateComponent implements OnInit {
 
-  noteForm: FormGroup;
+  private noteForm: FormGroup;
 
   constructor(private form: FormBuilder, private noteService: NoteService, private router: Router) {
     this.createForm();
@@ -27,6 +27,7 @@ export class NoteCreateComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.noteForm.value);
     this.noteService.createNote(this.noteForm.value).subscribe(() => {
       this.router.navigate(['/notes']);
     });

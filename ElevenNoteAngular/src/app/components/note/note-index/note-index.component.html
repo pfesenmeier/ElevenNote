@@ -10,7 +10,7 @@
         <ng-container matColumnDef="details">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let note;">
-                <i class="material-icons">library_books</i>
+                <i class="material-icons" routerLink="/notes/detail/{{note.NoteId}}">library_books</i>
             </mat-cell>
         </ng-container>
 
