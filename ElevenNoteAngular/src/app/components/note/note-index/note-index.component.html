@@ -1,3 +1,7 @@
+<h1>Your Notes</h1>
+<a mat-raised-button color="primary" routerLink="/notes/create">Create New</a>
+<hr />
+
 <div>
     <mat-table #table [dataSource]="dataSource">
         <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
